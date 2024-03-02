@@ -2,12 +2,15 @@ import {createStore} from "redux"
 
 // how to make reducer?
 
+const history = []
+
 // store 
 const store = createStore(reducer);   // rudux is make a store 
 
 
+
 // reducer
-function reducer (state={amount:1}, action) {    // state ke value aap initialize kar sakte ho, yani de sakte ho
+function reducer (state={amount:1}, action) {    
     if(action.type === 'increment'){
         return {amount:state.amount+1}
 
@@ -21,7 +24,8 @@ function reducer (state={amount:1}, action) {    // state ke value aap initializ
 
 // global state // this is subscribe function update the every time of store?
 store.subscribe(() => {   
-    console.log(store.getState())
+    history.push(store.getState())
+    console.log(history)
 })
 
 
@@ -29,7 +33,10 @@ store.subscribe(() => {
 
 
 // add action in redux
-store.dispatch({type:'increment'})   // state ke store me value add hogi
+setInterval(() => {
+    store.dispatch({type:'increment'})   
+},2000)      // time 2 sec delay
+
 
 
 
