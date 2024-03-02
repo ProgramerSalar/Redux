@@ -15,3 +15,5 @@ function reducer (state={amount:1}, action) {    // state ke value aap initializ
 
 // global state
 console.log(store.getState())   // state ko check karne ke liye ek function hota hai getState()
+
+
