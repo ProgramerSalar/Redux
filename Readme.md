@@ -23,3 +23,12 @@ add a middlware in store, why add the middle ware in store? if you set the middl
 
 add payload in store 
 ![alt text](<Screenshot 2024-03-02 210547.png>)
+
+
+install the json server
+what is the usees of json-server,because we are worked on json data so used it this things.
+
+$npm i -g json-server
+run the json-server: $json-server db.json
+
+

@@ -10,6 +10,7 @@ const history = []
 const increment = 'increment'
 const decrement = 'decrement'
 const incrementByAmount = 'incrementByAmount'
+const init = 'init'
 
 // store 
 const store = createStore(reducer, 
@@ -20,17 +21,30 @@ const store = createStore(reducer,
 
 // reducer
 function reducer (state={amount:1}, action) {    
-    if(action.type === increment){
-        return {amount:state.amount+1}
-    }
-    if(action.type === decrement){
-        return {amount:state.amount-1}
-    }
-    if(action.type === incrementByAmount){
-        return {amount:state.amount + action.payload}
-    }
 
-    return state
+    switch(action.type){
+
+        case init:
+            return {amount: action.payload}
+
+
+        case increment:
+            return {amount:state.amount+1}
+
+        case decrement:
+            return {amount:state.amount-1}
+
+        case incrementByAmount:
+            return {amount:state.amount + action.payload}
+
+        default:
+            return state
+
+        
+    }
+  
+
+    
 }
 
 
@@ -40,6 +54,11 @@ store.subscribe(() => {
     history.push(store.getState())
     console.log(history)
 })
+
+// Action creators
+function initUser(value){
+    return {type:init, payload:value}
+}
 
 
 //Action creator 
@@ -56,7 +75,7 @@ function incrByAmount(value){
 
 // add action in redux
 setInterval(() => {
-    store.dispatch(incrByAmount(4)) 
+    store.dispatch(initUser(4)) 
 },22000)      // time 2 sec delay
 
 
