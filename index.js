@@ -36,12 +36,21 @@ store.subscribe(() => {
 })
 
 
-
+//Action creator 
+function increment(){
+    return {type:'increment'}
+}
+function decrement(){
+    return {type:'decrement'}
+}
+function incrementByAmount(value){
+    return {type:'incrementByAmount', payload:value}
+}
 
 
 // add action in redux
 setInterval(() => {
-    store.dispatch({type:'incrementByAmount', payload:4})   
+    store.dispatch(incrementByAmount(4)) 
 },2000)      // time 2 sec delay
 
 
