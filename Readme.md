@@ -18,3 +18,8 @@ npm i redux-logger
 
 add a middlware in store, why add the middle ware in store? if you set the middleware, changed the output every timestamp:
 ![alt text](image.png)
+
+
+
+add payload in store 
+![alt text](<Screenshot 2024-03-02 210547.png>)
