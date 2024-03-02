@@ -1,11 +1,14 @@
-import {createStore} from "redux"
+import {createStore, applyMiddleware} from "redux"
+import logger from "redux-logger";
 
 // how to make reducer?
 
 const history = []
 
 // store 
-const store = createStore(reducer);   // rudux is make a store 
+const store = createStore(reducer, 
+    applyMiddleware(logger.default)   // add the middleware 
+    );   
 
 
 
