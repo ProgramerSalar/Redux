@@ -9,7 +9,10 @@ const store = createStore(reducer);   // rudux is make a store
 // reducer
 function reducer (state={amount:1}, action) {    // state ke value aap initialize kar sakte ho, yani de sakte ho
     if(action.type === 'increment'){
-        return {amount:state.amount+1}
+        // return {amount:state.amount+1}
+
+        // imutability the output 
+        state.amount = state.amount + 1
     }
     return state
 }
@@ -26,6 +29,5 @@ console.log(store.getState())
 
 
 
-{ amount: 1 }   // this is initial state 
-{ amount: 2 }   // fintal state 
+
 
