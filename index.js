@@ -58,8 +58,10 @@ function accountReducer (state={amount:1}, action) {
 function bonusReducer (state = {points: 0}, action){
 
     switch(action.type){
-        case increment:
-            return {points: state.points + 1}
+        case incrementByAmount:
+            if(action.payload >= 100)
+                return {points: state.points + 1}
+            
         default:
             return state
     }
@@ -95,7 +97,8 @@ function incrByAmount(value){
 // add action in redux
 setTimeout(() => {
     // store.dispatch(initUser(2)) 
-    store.dispatch(incr())
+    // store.dispatch(incr())
+    store.dispatch(incrByAmount(200))
 },2000)      // time 2 sec delay
 
 
