@@ -3,6 +3,7 @@ import {createStore, applyMiddleware} from "redux"
 import logger from "redux-logger";
 import  {thunk}  from 'redux-thunk';
 // import * as thunk from 'redux-thunk';
+import {state, newState} from "./test.js"
 
 // how to make reducer?
 
