@@ -10,10 +10,11 @@ import  {thunk}  from 'redux-thunk';
 
 
 // action name constant 
-const increment = 'increment'
-const decrement = 'decrement'
-const incrementByAmount = 'incrementByAmount'
-const init = 'init'
+const increment = 'account/increment'        // add domain name is account and action name is increment
+const decrement = 'account/decrement'
+const incrementByAmount = 'account/incrementByAmount'
+const init = 'account/init'
+const incBonus = 'bonus/increment'
 
 // store 
 const store = createStore(
@@ -61,6 +62,8 @@ function bonusReducer (state = {points: 0}, action){
         case incrementByAmount:
             if(action.payload >= 100)
                 return {points: state.points + 1}
+        case incBonus:
+            return {points: state.points + 1}
             
         default:
             return state
@@ -92,13 +95,17 @@ function decr(){
 function incrByAmount(value){
     return {type:incrementByAmount, payload:value}
 }
+function incrementBonus(){
+    return {type:incBonus}
+}
 
 
 // add action in redux
 setTimeout(() => {
     // store.dispatch(initUser(2)) 
     // store.dispatch(incr())
-    store.dispatch(incrByAmount(200))
+    // store.dispatch(incrByAmount(200))
+    store.dispatch(incrementBonus())
 },2000)      // time 2 sec delay
 
 
