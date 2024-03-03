@@ -50,3 +50,5 @@ output:
    next state { amount: 100 }                   //  final value 100 hai
 
 
+// setInterval me data regular run karta hai 
+// set TImeout me data only one time run karta hai

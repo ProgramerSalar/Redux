@@ -64,9 +64,12 @@ function reducer (state={amount:1}, action) {
 
 //Action creator 
 
-async function initUser(dispatch, getState){
-    const {data} = await axios.get('http://localhost:3000/account/1')
-    dispatch({type:init, payload:data.amount})
+function initUser(id){
+    return async(dispatch, getState) => {
+        const {data} = await axios.get(`http://localhost:3000/account/${id}`)
+        dispatch({type:init, payload:data.amount})
+    }
+    
 }
 
 // function incr(){
@@ -81,10 +84,9 @@ async function initUser(dispatch, getState){
 
 
 // add action in redux
-setInterval(() => {
-    store.dispatch(initUser) 
+setTimeout(() => {
+    store.dispatch(initUser(2)) 
 },2000)      // time 2 sec delay
-
 
 
 
