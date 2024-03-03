@@ -1,20 +1,16 @@
-import { useState } from 'react';
+import {incrementBonus} from "../actions"
 
-function Bonus() {
-  const [points, setPoints] = useState({ value: 0 });
-
-  const increment = () => {
-    setPoints({ value: points.value + 1 });
-  };
+function Bonus({store}) {
+  
   return (
     <div className="card">
       <div className="container">
         <h4>
           <b>Bonus Component</b>
         </h4>
-        <h3>Total Point : ${points.value}</h3>
+        <h3>Total Point : ${store.getState().bonus.points}</h3>
 
-        <button onClick={increment}>Increment +</button>
+        <button onClick={() => store.dispatch(incrementBonus())}>Increment +</button>
       </div>
     </div>
   );
