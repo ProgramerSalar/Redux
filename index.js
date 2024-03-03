@@ -1,5 +1,8 @@
+import axios from "axios";
 import {createStore, applyMiddleware} from "redux"
 import logger from "redux-logger";
+import  {thunk}  from 'redux-thunk';
+// import * as thunk from 'redux-thunk';
 
 // how to make reducer?
 
@@ -14,7 +17,8 @@ const init = 'init'
 
 // store 
 const store = createStore(reducer, 
-    applyMiddleware(logger.default)   // add the middleware 
+    applyMiddleware(logger.default, thunk),
+    
     );   
 
 
@@ -50,33 +54,36 @@ function reducer (state={amount:1}, action) {
 
 
 // global state // this is subscribe function update the every time of store?
-store.subscribe(() => {   
-    history.push(store.getState())
-    console.log(history)
-})
+// store.subscribe(() => {   
+//     history.push(store.getState())
+//     console.log(history)
+// })
 
-// Action creators
-function initUser(value){
-    return {type:init, payload:value}
-}
+
 
 
 //Action creator 
-function incr(){
-    return {type:increment}
+
+async function initUser(dispatch, getState){
+    const {data} = await axios.get('http://localhost:3000/account/1')
+    dispatch({type:init, payload:data.amount})
 }
-function decr(){
-    return {type:decrement}
-}
-function incrByAmount(value){
-    return {type:incrementByAmount, payload:value}
-}
+
+// function incr(){
+//     return {type:increment}
+// }
+// function decr(){
+//     return {type:decrement}
+// }
+// function incrByAmount(value){
+//     return {type:incrementByAmount, payload:value}
+// }
 
 
 // add action in redux
 setInterval(() => {
-    store.dispatch(initUser(4)) 
-},22000)      // time 2 sec delay
+    store.dispatch(initUser) 
+},2000)      // time 2 sec delay
 
 
 

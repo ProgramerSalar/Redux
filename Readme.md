@@ -32,3 +32,21 @@ $npm i -g json-server
 run the json-server: $json-server db.json
 
 
+add a new middleware redux-things
+npm i redux-things
+
+
+
+output:
+![alt text](<Screenshot 2024-03-03 101022.png>)
+
+ action undefined @ 10:06:52.949
+   prev state { amount: 1 }                   // initial state ki value 1 thi
+   action     [AsyncFunction: initUser]        // fir ek asyncfunction add hua function ka name hai initUser
+   next state { amount: 1 }                    // function add hone ke baad amount ki value chanage nahi hue, because jab aap koi async   function ko jodte ho to state ruk jata hai, so state change nahi hua
+ action init @ 10:06:52.996
+   prev state { amount: 1 }                     // initial state ki value 1 thi
+   action     { type: 'init', payload: 100 }    // initUser function call kiya to amount data 100 thi 
+   next state { amount: 100 }                   //  final value 100 hai
+
+
