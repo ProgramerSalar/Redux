@@ -52,3 +52,8 @@ output:
 
 // setInterval me data regular run karta hai 
 // set TImeout me data only one time run karta hai
+
+
+
+see the output of handing the function:
+![alt text](image-1.png)
