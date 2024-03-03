@@ -1,13 +1,12 @@
 import axios from "axios";
-import {createStore, applyMiddleware} from "redux"
+import {createStore, applyMiddleware, combineReducers} from "redux"
 import logger from "redux-logger";
 import  {thunk}  from 'redux-thunk';
 // import * as thunk from 'redux-thunk';
-import {state, newState} from "./test.js"
+// import {state, newState} from "./test.js"
 
 // how to make reducer?
 
-const history = []
 
 
 // action name constant 
@@ -17,7 +16,11 @@ const incrementByAmount = 'incrementByAmount'
 const init = 'init'
 
 // store 
-const store = createStore(reducer, 
+const store = createStore(
+    combineReducers({
+        account:accountReducer,
+        bonus:bonusReducer
+    }), 
     applyMiddleware(logger.default, thunk),
     
     );   
@@ -25,7 +28,7 @@ const store = createStore(reducer,
 
 
 // reducer
-function reducer (state={amount:1}, action) {    
+function accountReducer (state={amount:1}, action) {    
 
     switch(action.type){
 
@@ -52,13 +55,18 @@ function reducer (state={amount:1}, action) {
     
 }
 
+function bonusReducer (state = {points: 0}, action){
+
+    switch(action.type){
+        case increment:
+            return {points: state.points + 1}
+        default:
+            return state
+    }
+}
 
 
-// global state // this is subscribe function update the every time of store?
-// store.subscribe(() => {   
-//     history.push(store.getState())
-//     console.log(history)
-// })
+
 
 
 
@@ -73,20 +81,21 @@ function initUser(id){
     
 }
 
-// function incr(){
-//     return {type:increment}
-// }
-// function decr(){
-//     return {type:decrement}
-// }
-// function incrByAmount(value){
-//     return {type:incrementByAmount, payload:value}
-// }
+function incr(){
+    return {type:increment}
+}
+function decr(){
+    return {type:decrement}
+}
+function incrByAmount(value){
+    return {type:incrementByAmount, payload:value}
+}
 
 
 // add action in redux
 setTimeout(() => {
-    store.dispatch(initUser(2)) 
+    // store.dispatch(initUser(2)) 
+    store.dispatch(incr())
 },2000)      // time 2 sec delay
 
 
