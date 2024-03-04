@@ -5,14 +5,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { configureStore } from '@reduxjs/toolkit';
 import accountSlices from './redux/slices/accountSlices';
-import  bonusSlice  from './redux/slices/bonus';
 import {Provider} from "react-redux"
+import bonusSlices from './redux/slices/bonusSlices';
 
 
 const store = configureStore({
   reducer:{
     account:accountSlices,
-    bonus:bonusSlice
+    bonus:bonusSlices
   }
 })
 
