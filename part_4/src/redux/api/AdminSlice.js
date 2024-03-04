@@ -18,10 +18,18 @@ export const adminApi = createApi({
             body:{amount, id}  // amount and id send karna hai 
         }), 
         invalidatesTags:['account/']   //  invalidateTags means, kon kon sa data jha data ko CRUD operation karna mens chanage karna hai 
+    }),
+    deleteAccount: builder.mutation({
+        query: (id) => ({
+            url:`account/${id}`,
+            method:"DELETE",
+            
+        }),
+        invalidatesTags:['account/']
     })
   }),
 })
 
 // Export hooks for usage in function components, which are
 // auto-generated based on the defined endpoints
-export const { useGetAccountQuery, useAddAccountMutation } = adminApi
+export const { useGetAccountQuery, useAddAccountMutation, useDeleteAccountMutation } = adminApi
