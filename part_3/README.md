@@ -27,4 +27,9 @@ like this condition:
     })
 
 // in this condition: action are match the account/incrementByAmount, if payload increase above of 100 then increase the points 
- 
+
+
+## we are learn createAsyncThunk:
+see this documentation:https://redux-toolkit.js.org/api/createAsyncThunk
+
+
