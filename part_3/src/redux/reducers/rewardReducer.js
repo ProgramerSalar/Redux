@@ -12,6 +12,7 @@ const rewardReducer = createReducer(initialState, (builder) => {
   builder.addCase(incrementByAmount, (state, action) => {
     state.points += action.payload;
   });
+  
 });
 
 export default rewardReducer;
