@@ -11,9 +11,17 @@ export const adminApi = createApi({
       query: () => `account/`,      // query path 
       providesTags:['account/']     // if data are cashing then used the providesTags
     }),
+    addAccount:builder.mutation({    // GET operation are query and other are mutation like POST, PUT, Delete
+        query:(amount, id) => ({
+            url:"account/",
+            method:"POST",
+            body:{amount, id}  // amount and id send karna hai 
+        }), 
+        invalidatesTags:['account/']   //  invalidateTags means, kon kon sa data jha data ko CRUD operation karna mens chanage karna hai 
+    })
   }),
 })
 
 // Export hooks for usage in function components, which are
 // auto-generated based on the defined endpoints
-export const { useGetAccountQuery } = adminApi
+export const { useGetAccountQuery, useAddAccountMutation } = adminApi

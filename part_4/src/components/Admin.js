@@ -1,7 +1,14 @@
-import { useGetAccountQuery } from "../redux/api/AdminSlice";
+import { useAddAccountMutation, useGetAccountQuery } from "../redux/api/AdminSlice";
 
 function Admin() {
-  const { data, error, isLoading } = useGetAccountQuery();
+    // this is distructore element, if you get the data 
+  const { data, error, isLoading }  = useGetAccountQuery();  
+  // if you chanage the data then used to array, LIKE this method: POST, PUT, DELETE
+   const [
+    addAccount,     // this is variable run the request 
+     response       // this is response veriable, what is the response when send the data ya delete the data 
+    ]  = useAddAccountMutation()
+
 
   return (
     <div className="card">
@@ -16,7 +23,7 @@ function Admin() {
             </p>
           ))}
 
-        {/* <button onClick={() => dispatch(increment())}>Increment +</button> */}
+        <button onClick={() => addAccount(101, data.length+1)}>Add Account +</button>
       </div>
     </div>
   );
