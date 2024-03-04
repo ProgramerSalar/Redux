@@ -3,11 +3,26 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { configureStore } from '@reduxjs/toolkit';
+import accountSlices from './redux/slices/accountSlices';
+import  bonusSlice  from './redux/slices/bonus';
+import {Provider} from "react-redux"
+
+
+const store = configureStore({
+  reducer:{
+    account:accountSlices,
+    bonus:bonusSlice
+  }
+})
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <Provider store={store}>
     <App />
+
+    </Provider>
   </React.StrictMode>
 );
 
