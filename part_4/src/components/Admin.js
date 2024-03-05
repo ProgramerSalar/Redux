@@ -2,6 +2,7 @@ import {
   useAddAccountMutation,
   useDeleteAccountMutation,
   useGetAccountQuery,
+  useUpdateAccountMutation,
 } from "../redux/api/AdminSlice";
 
 function Admin() {
@@ -13,7 +14,7 @@ function Admin() {
     Addresponse, // this is response veriable, what is the response when send the data ya delete the data
   ] = useAddAccountMutation();
   const [deleteAccount, deleteResponse] = useDeleteAccountMutation();
-
+  const [updateAccount] = useUpdateAccountMutation()
   return (
     <div className="card">
       <div className="container">
@@ -29,6 +30,10 @@ function Admin() {
               <button onClick={() => deleteAccount(account.id)}>
                 Delete Account -
               </button>
+              <button onClick={() => updateAccount({id:account.id, amount:777})}>
+                update Account 
+              </button>
+
             </div>
           ))}
 
