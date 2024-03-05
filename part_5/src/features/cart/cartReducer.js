@@ -6,31 +6,27 @@ const initialState = {
   status: "idle",
 };
 
-export const fetchAsync = createAsyncThunk(
-  "cart/fetchItems",
-  async (item) => {
-    const response = await fetchItems(item);
-    return response.data;
-  }
-);
-export const AddAsync = createAsyncThunk(
-  "cart/Addproduct",
-  async (item) => {
-    const {id, title, brand,thumbnail, price} = item;
-    const response = await AddItems({id, title, brand,thumbnail, price, quantity:1 });
-    return response.data;
-
-  }
-);
-export const deleteAsync = createAsyncThunk(
-  "cart/deleteItem",
-  async (id) => {
-    // const {id, title, brand,thumbnail, price} = item;
-    await deleteItems(id);
-    return id
-
-  }
-);
+export const fetchAsync = createAsyncThunk("cart/fetchItems", async (item) => {
+  const response = await fetchItems(item);
+  return response.data;
+});
+export const AddAsync = createAsyncThunk("cart/Addproduct", async (item) => {
+  const { id, title, brand, thumbnail, price } = item;
+  const response = await AddItems({
+    id,
+    title,
+    brand,
+    thumbnail,
+    price,
+    quantity: 1,
+  });
+  return response.data;
+});
+export const deleteAsync = createAsyncThunk("cart/deleteItem", async (id) => {
+  // const {id, title, brand,thumbnail, price} = item;
+  await deleteItems(id);
+  return id;
+});
 
 export const cartSlice = createSlice({
   name: "cart",
@@ -48,13 +44,15 @@ export const cartSlice = createSlice({
       })
       .addCase(AddAsync.fulfilled, (state, action) => {
         state.status = "idle";
-        state.items.push(action.payload);  // payload add in items array 
+        state.items.push(action.payload); // payload add in items array
       })
       .addCase(deleteAsync.fulfilled, (state, action) => {
         state.status = "idle";
-        const index = state.items.findIndex(item => item.id === action.payload)
-        state.items.splice(index, 1);  // index, and no of item  
-      })
+        const index = state.items.findIndex(
+          (item) => item.id === action.payload
+        );
+        state.items.splice(index, 1); // index, and no of item
+      });
   },
 });
 

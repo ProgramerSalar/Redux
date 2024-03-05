@@ -561,14 +561,6 @@
       "thumbnail": "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
       "price": 549,
       "quantity": 1
-    },
-    {
-      "id": "2",
-      "title": "iPhone X",
-      "brand": "Apple",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
-      "price": 899,
-      "quantity": 1
     }
   ]
 }

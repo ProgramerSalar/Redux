@@ -1,21 +1,26 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { AddAsync } from "../cart/cartReducer";
 import { fetchAsync } from "./productReducer";
+
 export const Product = () => {
   const dispatch = useDispatch();
-
+  
   const data  = useSelector(
     (state) => state.product.products // product is store name reducer name and products is  action name
   );
-  console.log(data);
+  // console.log(data);
+
+  const item = useSelector((state) => state.cart.items)
+
   useEffect(() => {
     dispatch(fetchAsync())
   },[])
 
   return (
     <div class="card">
+
       {
       
         data.map((product) => (
