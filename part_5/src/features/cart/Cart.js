@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAsync } from "./productReducer";
+import { fetchAsync } from "./cartReducer";
 
 export const Product = () => {
   const dispatch = useDispatch();
