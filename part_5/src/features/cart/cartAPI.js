@@ -1,8 +1,19 @@
 // A mock function to mimic making an async request for data
 import axios from "axios"
 
-export function fetchproducts(amount = 1) {
-  return axios.get('http://localhost:8080/products')
+export function fetchItems() {
+  return axios.get('http://localhost:8080/cart')
   
-
+}
+export function AddItems(item) {
+  return axios.post('http://localhost:8080/cart',item)
+  
+}
+export function updateItems(id, itemUpdate) {
+  return axios.put(`http://localhost:8080/cart/${id}`, itemUpdate)
+  
+}
+export function deleteItems(id) {
+  return axios.delete(`http://localhost:8080/cart/${id}`)
+  
 }

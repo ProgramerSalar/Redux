@@ -1,15 +1,19 @@
 
 
-
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import React from 'react'
+import { Cart } from './features/cart/Cart'
 import { Product } from './features/counter/Product'
 
 const App = () => {
   return (
-    <div>
-      
-      <Product/>
-    </div>
+    <BrowserRouter>
+    <Routes>
+      <Route path='/cart' element={<Cart/>} />
+      <Route path='/' element={<Product/>} />
+
+    </Routes>
+    </BrowserRouter>
   )
 }
 

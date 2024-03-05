@@ -1,7 +1,7 @@
 // A mock function to mimic making an async request for data
 import axios from "axios"
 
-export function fetchproducts(amount = 1) {
+export function fetchproducts() {
   return axios.get('http://localhost:8080/products')
   
 

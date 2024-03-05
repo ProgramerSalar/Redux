@@ -1,17 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAsync } from "./productReducer";
 
+import { AddAsync } from "../cart/cartReducer";
+import { fetchAsync } from "./productReducer";
 export const Product = () => {
   const dispatch = useDispatch();
 
   const data  = useSelector(
     (state) => state.product.products // product is store name reducer name and products is  action name
   );
-  // console.log(data);
+  console.log(data);
+  useEffect(() => {
+    dispatch(fetchAsync())
+  },[])
+
   return (
     <div class="card">
       {
+      
         data.map((product) => (
           <div>
   <img
@@ -23,7 +29,7 @@ export const Product = () => {
       <p class="price">${product.price}</p>
       <p>{product.description}</p>
       <p>
-        <button onClick={() => dispatch(fetchAsync())}>Add to Cart</button>
+        <button onClick={() => dispatch(AddAsync(product))}>Add to Cart</button>
       </p>
             </div>
         ))
